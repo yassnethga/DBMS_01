@@ -61,7 +61,7 @@ If any of the above commands return `command not found`, resolve the installatio
 
 > **Screenshot 1:** Take a screenshot of your terminal showing all four successful version checks and insert it here.
 >
-> `(https://github.com/yassnethga/DBMS_01/blob/6d009b5bc23d848590b217ff4a6300fe7eee704d/Terminal.png)`
+> [`(https://github.com/yassnethga/DBMS_01/blob/6d009b5bc23d848590b217ff4a6300fe7eee704d/Terminal.png)`](https://github.com/yassnethga/DBMS_01/blob/844be71d3f5cbb55d6a0433b5669a3f5104aa93e/Terminal.png)
 
 ---
 
