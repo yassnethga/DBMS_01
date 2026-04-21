@@ -285,14 +285,16 @@ Answer the following questions in your own words and add your answers directly b
 **Question 1.2:** The shell solution uses `sensordata/T02_*.csv` as a file pattern, even though `grep -h "T02"` already filters for `T02`. Why is the file pattern still important — and what would happen if you used `sensordata/*.csv` instead?
 
 > *Your answer:*
+     The file pattern `sensordata/T02_*.csv` ensures that only files for sensor T02 are processed.
+     Even though `grep -h "T02"` filters the correct lines, using `sensordata/*.csv` would load all sensor files, which is          inefficient and unnecessary.
+     Therefore, the file pattern is important because it limits input files and improves performance.
 
 **Question 1.3:** The SQL solution uses `ORDER BY timestamp` even though `timestamp` is stored as type `TEXT`. Why does chronological sorting still work correctly? Under what condition would it fail?
 
 > *Your answer:*
-     The file pattern `sensordata/T02_*.csv` ensures that only files for sensor T02 are processed.
-    Even though `grep -h "T02"` filters the correct lines, using `sensordata/*.csv` would load all sensor files, which is inefficient and unnecessary.
-    Therefore, the file pattern is important because it limits input files and improves performance.
-
+    The timestamps are stored in ISO format (YYYY-MM-DDTHH:MM:SS), which means they are lexicographically ordered.
+    Because of this format, alphabetical (text) sorting produces the same result as chronological sorting.
+    It would fail if the timestamp format were different, for example DD-MM-YYYY, where text order does not match time order.
 ---
 
 ## Task 2 — Find all readings above 25 °C, for any sensor, in March 2026
