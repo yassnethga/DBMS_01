@@ -268,7 +268,7 @@ EOF
 
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
-> [https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%204.png](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%204.png)
+> [(https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%204.png)](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%204.png)
 
 
 ### Questions for Task 1
