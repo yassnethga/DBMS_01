@@ -199,7 +199,7 @@ echo "Import complete."
 
 > **Screenshot 3:** Take a screenshot showing the successful execution of the import script and the result of the `COUNT(*)` query, and insert it here.
 >
-> (https://github.com/yassnethga/DBMS_01/blob/7a8d7b5ed8e87c28084dcc0b4c36b6ef0782b6fd/termin%203.png)
+> [(https://github.com/yassnethga/DBMS_01/blob/7a8d7b5ed8e87c28084dcc0b4c36b6ef0782b6fd/termin%203.png)](https://github.com/yassnethga/DBMS_01/blob/bbb52dcaf8f324f5e5c18343f5bb26e2ab34e194/termin%203.png)
 
 ---
 
