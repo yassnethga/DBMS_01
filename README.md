@@ -268,7 +268,7 @@ EOF
 
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
-> `[insert screenshot]`
+> https://github.com/yassnethga/DBMS_01/blob/ec0a6f80c4ac7b531f9d84b1cdfe707ee61cc6a1/terminal%204.png
 
 ### Questions for Task 1
 
@@ -277,6 +277,10 @@ Answer the following questions in your own words and add your answers directly b
 **Question 1.1:** Why is `grep -v "^timestamp"` needed in the shell solution even though the files are already filtered with `grep -h "T02"`? Could this step be omitted? Justify your answer.
 
 > *Your answer:*
+     grep -h "T02" still includes header lines from each CSV file because every file contains its own header.
+     `grep -v "^timestamp"` is needed to remove these headers.
+     Without it, multiple header rows would appear in the output, making it messy and less readable. Therefore, it should
+     not be omitted.
 
 **Question 1.2:** The shell solution uses `sensordata/T02_*.csv` as a file pattern, even though `grep -h "T02"` already filters for `T02`. Why is the file pattern still important — and what would happen if you used `sensordata/*.csv` instead?
 
@@ -285,6 +289,9 @@ Answer the following questions in your own words and add your answers directly b
 **Question 1.3:** The SQL solution uses `ORDER BY timestamp` even though `timestamp` is stored as type `TEXT`. Why does chronological sorting still work correctly? Under what condition would it fail?
 
 > *Your answer:*
+     The file pattern `sensordata/T02_*.csv` ensures that only files for sensor T02 are processed.
+    Even though `grep -h "T02"` filters the correct lines, using `sensordata/*.csv` would load all sensor files, which is inefficient and unnecessary.
+    Therefore, the file pattern is important because it limits input files and improves performance.
 
 ---
 
