@@ -268,7 +268,8 @@ EOF
 
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
-> https://github.com/yassnethga/DBMS_01/blob/ec0a6f80c4ac7b531f9d84b1cdfe707ee61cc6a1/terminal%204.png
+> [](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%204.png)`]
+
 
 ### Questions for Task 1
 
@@ -364,14 +365,16 @@ EOF
 </details>
 
 > **Screenshot 5:** Take a screenshot showing the output of the Task 2 SQLite query and insert it here.
->
-> `[insert screenshot]`
+> 
+> [(https://github.com/yassnethga/DBMS_01/blob/f90a2170eca28e1835ce4d1adf46f67435fb4743/terminal%205.png)](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%205.png)
 
 ### Questions for Task 2
 
 **Question 2.1:** The shell solution filters by date using `grep -rh "2026-03"`. What problem could arise if a sensor value happened to contain the string `2026-03` — for example as part of an error note? How does the SQL solution handle this problem?
 
 > *Your answer:*
+> Using grep can accidentally match the date string inside any column, not only the timestamp. If the string "2026-03" appeared in another field (e.g. an error message), it would also be included.
+SQL avoids this problem because it filters directly on the timestamp column, not on raw text.
 
 **Question 2.2:** The SQL solution uses `timestamp LIKE '2026-03-%'` for the date filter instead of a proper date function. Name one advantage and one disadvantage of this approach.
 
@@ -380,7 +383,10 @@ EOF
 **Question 2.3:** The SQL solution returns results sorted by `ORDER BY value_celsius DESC`. The shell solution does not include this sorting. Extend the shell solution to also sort by temperature in descending order and write your command here.
 
 > *Your answer (extended shell command):*
-
+> grep -h "2026-03" sensordata/*.csv | \
+  grep -v "^timestamp" | \
+  awk -F',' '$4 > 25 {print $1, $2, $4}' | \
+  sort -k3,3 -nr
 ---
 
 ## Task 3 — Per-sensor statistics: min, max, and average temperature
@@ -466,22 +472,34 @@ EOF
 
 > **Screenshot 6:** Take a screenshot showing the output of the Task 3 SQLite query — the four rows with sensor statistics — and insert it here.
 >
-> `[insert screenshot]`
+> [`[insert screenshot]`](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%206.png)
 
 ### Questions for Task 3
 
 **Question 3.1:** The `awk` solution initialises `min=9999` and `max=-9999`. What would happen if all temperature values in the dataset were greater than 9999? How could the initialisation be made more robust?
 
 > *Your answer:*
+> If all values were greater than 9999, initializing min=9999 would produce incorrect results because no value would be smaller.
+A better approach is to initialize min and max using the first actual dataset value instead of fixed numbers.
 
 **Question 3.2:** The SQL solution uses `GROUP BY sensor_id`. What would the query return *without* this clause — i.e. if you ran `SELECT sensor_id, MIN(value_celsius), MAX(value_celsius), ROUND(AVG(value_celsius), 1) FROM readings`? Try it and describe the result.
 
 > *Your answer:*
+> Without GROUP BY, the query would return a single row containing aggregated values over all sensors combined, rather than separate results per sensor.
+The sensor_id column would not be meaningful in that case.
 
 **Question 3.3:** Extend the SQL query with an additional column `COUNT(*) AS num_readings` that shows the total number of measurements for each sensor. Write the complete extended query here.
 
 > *Your answer (extended SQL query):*
 
+  SELECT sensor_id,
+       MIN(value_celsius) AS min_temp,
+       MAX(value_celsius) AS max_temp,
+       ROUND(AVG(value_celsius), 1) AS avg_temp,
+       COUNT(*) AS num_readings
+FROM readings
+GROUP BY sensor_id
+ORDER BY sensor_id;
 ---
 
 ## Reflection
@@ -492,21 +510,25 @@ After completing all three tasks, answer the following questions:
 Which approach was easier to write correctly on the first try? Explain which properties of each language contributed to this.
 
 > *Your answer:*
+> SQL was easier because it is declarative. The shell needs more steps and is more error-prone.
 
 **Question B — Extensibility:**
 What would you need to change in the shell solution if a fifth sensor `T05` were added? What about the SQL solution? Which approach scales better — and why?
 
 > *Your answer:*
+> Shell must manually include T05 files. SQL needs no changes. SQL scales better.
 
 **Question C — Performance:**
 The shell solution reads files from disk on every invocation. A database can cache frequently queried data in memory. What does this mean for performance with 10 000 sensors and multi-year measurement data?
 
 > *Your answer:*
+> Shell is slow for large data because it reads files every time. Databases are faster due to caching and indexing.
 
 **Question D — Declarative vs. imperative:**
 SQL is called a *declarative* language: you describe *what* you want, not *how* to compute it. Bash/awk, by contrast, are *imperative*: you write step by step how the result is to be computed. In which of the three tasks did you feel this difference most clearly? Justify your choice.
 
 > *Your answer:*
+> Task 3 showed it best: SQL uses simple GROUP BY, shell needs manual calculations.
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
 >
