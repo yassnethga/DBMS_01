@@ -109,7 +109,7 @@ cat sensordata/T01_2026-03-01.csv
 
 > **Screenshot 2:** Take a screenshot showing the output of `ls sensordata/ | head -8` and the contents of one CSV file, and insert it here.
 >
-> `[insert screenshot]`
+> [`[insert screenshot]`](https://github.com/yassnethga/DBMS_01/blob/e09fb1af2b6fb67cc275d10c1198a61198057e0a/terminal%202%20.png)
 
 ### What does the script do, line by line?
 
