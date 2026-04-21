@@ -472,7 +472,7 @@ EOF
 
 > **Screenshot 6:** Take a screenshot showing the output of the Task 3 SQLite query — the four rows with sensor statistics — and insert it here.
 >
-> [``](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%206.png)
+> [`https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%206.png`](https://github.com/yassnethga/DBMS_01/blob/878b860bff00375462abc2a5096d70abe958d5e6/terminal%206.png)
 
 ### Questions for Task 3
 
@@ -532,7 +532,7 @@ SQL is called a *declarative* language: you describe *what* you want, not *how* 
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
 >
-> [](https://github.com/yassnethga/DBMS_01/blob/9c9196a51f8339faab05991312befa7024935386/terminal%207.png)
+> [ https://github.com/yassnethga/DBMS_01/blob/9c9196a51f8339faab05991312befa7024935386/terminal%207.png](https://github.com/yassnethga/DBMS_01/blob/9c9196a51f8339faab05991312befa7024935386/terminal%207.png)
 
 ---
 
